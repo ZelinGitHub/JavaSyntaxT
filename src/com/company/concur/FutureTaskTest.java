@@ -5,7 +5,7 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-public class FutureTastTest {
+public class FutureTaskTest {
 
     private static void testFutureTask() {
         Callable<String> callable = new Callable<String>() {
@@ -32,6 +32,7 @@ public class FutureTastTest {
         FutureTask<String> futureTask = new FutureTask<String>(callable);
         new Thread(futureTask).start();
 
+        System.out.println("是否完成：" + futureTask.isDone());
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
