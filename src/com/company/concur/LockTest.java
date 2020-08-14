@@ -43,6 +43,9 @@ public class LockTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        condition.signalAll();
+        condition.signal();
     }
 
     private static void testReadWriteLock() {

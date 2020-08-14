@@ -6,6 +6,7 @@ import java.util.concurrent.FutureTask;
 
 public class ThreadTest {
     public static void test() {
+        testInterrupt();
     }
 
     private static void testFutureTask() {
@@ -20,25 +21,36 @@ public class ThreadTest {
     }
 
     private static void testInterrupt() {
-        Thread curThread = Thread.currentThread();
-        boolean isInterrupted = curThread.isInterrupted();
-        boolean isInterruptedX = Thread.interrupted();
-        curThread.interrupt();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("我是正在执行的线程");
-                if(Thread.interrupted()){
-                    System.out.println("中断状态为true，我选择结束运行");
-                    return;
-                }else {
-
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("线程开始执行");
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("线程执行结束");
+                    }
+                });
+                thread.start();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                System.out.println("中断前");
+                thread.interrupt();
+                System.out.println("中断后");
             }
         }).start();
+
     }
 
-    public static void testJoin(){
+    public static void testJoin() {
         Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
