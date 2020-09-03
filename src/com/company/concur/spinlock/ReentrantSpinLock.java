@@ -16,7 +16,7 @@ public class ReentrantSpinLock {
         }
     }
 
-    public void unLock() {
+    public void unlock() {
         Thread currentThread = Thread.currentThread();
         if (currentThread == mAtomicReference.get()) {
             if (count > 0) {

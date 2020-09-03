@@ -10,7 +10,7 @@ public class SpinLock {
         }
     }
 
-    public void unLock(){
+    public void unlock(){
         Thread currentThread=Thread.currentThread();
         mAtomicReference.compareAndSet(currentThread,null);
     }
