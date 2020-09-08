@@ -6,7 +6,7 @@ import com.company.concur.spinlock.SpinLockTest;
 public class Main {
 
     public static void main(String[] args) {
-        SpinLockTest.testMCSLock();
+        SpinLockTest.testCLHLock();
     }
 
 

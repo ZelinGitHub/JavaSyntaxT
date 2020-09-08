@@ -6,6 +6,7 @@ public class ThreadLocalTest {
         ThreadLocal<String> stringThreadLocal = new ThreadLocal<>();
         stringThreadLocal.set("h");
         stringThreadLocal.get();
+        stringThreadLocal.remove();
     }
 
 }

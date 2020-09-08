@@ -3,9 +3,9 @@ package com.company.concur.spinlock;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TicketLock {
-    private AtomicInteger mServiceNum = new AtomicInteger();
+    private AtomicInteger mServiceNum = new AtomicInteger(0);
 
-    private AtomicInteger mTicketNum = new AtomicInteger();
+    private AtomicInteger mTicketNum = new AtomicInteger(0);
 
     public int lock() {
         int currentTicketNum = mTicketNum.getAndIncrement();
@@ -15,6 +15,6 @@ public class TicketLock {
     }
 
     public void unlock(int ticketNum) {
-        mServiceNum.compareAndSet(ticketNum, ticketNum + 1);
+        mServiceNum.compareAndSet(ticketNum, mServiceNum.get()+1);
     }
 }

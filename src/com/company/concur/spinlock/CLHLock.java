@@ -4,8 +4,9 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 public class CLHLock {
     public static class CLHNode {
-        private volatile boolean isCurrentOrSomeonePreHaveLock = true;
+        private volatile boolean isActive = true;
     }
+
     private volatile CLHNode mTail;
     private static final ThreadLocal<CLHNode> THREAD_LOCAL = new ThreadLocal<>();
     private static final AtomicReferenceFieldUpdater UPDATER
@@ -16,19 +17,25 @@ public class CLHLock {
     );
 
     public void lock() {
-        CLHNode node = new CLHNode();
-        THREAD_LOCAL.set(node);
+        CLHNode node = THREAD_LOCAL.get();
+        if (node == null) {
+            node = new CLHNode();
+            THREAD_LOCAL.set(node);
+        }
         CLHNode preNode = (CLHNode) UPDATER.getAndSet(this, node);
         if (preNode != null) {
-            while (preNode.isCurrentOrSomeonePreHaveLock) {
+            while (preNode.isActive) {
             }
         }
     }
 
     public void unlock() {
         CLHNode node = THREAD_LOCAL.get();
-        if (!UPDATER.compareAndSet(this, node, null)) {
-            node.isCurrentOrSomeonePreHaveLock = false;
+        if (node != null && node.isActive) {
+            if (!UPDATER.compareAndSet(this, node, null)) {
+                node.isActive = false;
+            }
+            THREAD_LOCAL.remove();
         }
     }
 }
