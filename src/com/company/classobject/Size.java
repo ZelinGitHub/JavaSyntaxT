@@ -1,4 +1,4 @@
-package com.company.cls;
+package com.company.classobject;
 
 //Size实际上是继承自Enum的一个类
 public enum Size {

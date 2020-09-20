@@ -1,13 +1,12 @@
 package com.company;
 
 
-import com.company.collect.CompareTest;
-import com.company.concur.spinlock.SpinLockTest;
+import com.company.classobject.ClassObjectTest;
 
 public class Main {
 
     public static void main(String[] args) {
-        CompareTest.test2();
+        ClassObjectTest.test2();
     }
 
 
