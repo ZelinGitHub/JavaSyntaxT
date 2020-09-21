@@ -1,4 +1,4 @@
-package com.company.cls;
+package com.company.classobject;
 
 public class God {
     private final int a = 7;
