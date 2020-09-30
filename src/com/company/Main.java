@@ -1,7 +1,7 @@
 package com.company;
 
 
-import com.company.classobject.ClassObjectTest;
+import com.company.java.classobject.ClassObjectTest;
 
 public class Main {
 
