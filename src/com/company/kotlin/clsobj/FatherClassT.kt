@@ -26,3 +26,8 @@ open class RichButton2 : Clickable {
     }
 
 }
+
+open class RichButton3 : Clickable {
+    final override fun click() {
+    }
+}

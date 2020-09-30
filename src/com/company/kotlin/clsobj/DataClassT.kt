@@ -33,3 +33,4 @@ fun iiiiiiii(){
     //复制对象，创建副本，改变邮编
     print(bob.copy(postalCode = 78))
 }
+

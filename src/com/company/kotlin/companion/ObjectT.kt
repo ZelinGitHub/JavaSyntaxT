@@ -1,7 +1,10 @@
 package com.company.kotlin.companion
 
 import com.company.kotlin.basic.UziNC
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
 import java.io.File
+import java.io.Serializable
 
 /**
  * 对象声明
@@ -47,5 +50,13 @@ data class Person6(val name: String) {
         override fun compare(o1: Person6, o2: Person6): Int =
                 o1.name.compareTo(o2.name)
 
+    }
+}
+
+fun fuckHard(){
+    object:MouseAdapter(){
+        override fun mouseClicked(e: MouseEvent?) {
+            super.mouseClicked(e)
+        }
     }
 }

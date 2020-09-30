@@ -8,7 +8,6 @@ interface View{
     //State是返回值类型
     fun getCurrentState():State
     fun restoreState(state: State){
-
     }
 }
 
