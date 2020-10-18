@@ -1,55 +1,78 @@
 package com.company.kotlin.clsobj
 
 
-
 open class Animal(val nickname: String) {
 }
-
-//有主构造函数
-class Tiger(nickname: String, id: String) : Animal(nickname) {
-}
-
-//有隐式生成的默认主构造函数
-class Tiger3 : Animal("abc") {
-}
-
-//没有主构造函数
-class Tiger2 : Animal {
-    constructor(sex: String):super("abc") {
-
-    }
-}
-
 
 open class ShenFu {
 }
 
-//有主构造函数
+open class Ghost {
+    constructor(name: String) {
+    }
+
+    constructor(name: String, number: String) {
+    }
+}
+
+//当前类有主构造函数
+//调用基类的主构造函数
+class Tiger(nickname: String, id: String) : Animal(nickname) {
+}
+
+class Tiger3 : Animal("abc") {
+}
+
+//调用基类隐式的默认主构造函数
 class Uzi constructor(name: String) : ShenFu() {
 }
-//有隐式生成的默认主构造函数
+
 class Uzi3 : ShenFu() {
 }
 
-//没有主构造函数，只有一个次构造函数
+//调用基类的次构造函数
+class BlackGhost(val mName: String) : Ghost("Davi", "007") {
+}
+
+
+//当前类没有主构造函数
+//调用基类的主构造函数
+class Tiger2 : Animal {
+    private val mSex: Int
+
+    constructor(sex: Int) : super("abc") {
+        mSex = sex
+    }
+}
+
+//调用基类隐式的默认主构造函数
 class Uzi2 : ShenFu {
-    constructor():super() {
+    private val mSex: Int
 
+    constructor(pSex: Int) : super() {
+        mSex = pSex
     }
 }
 
+//调用基类的次构造函数
+class WhiteGhost : Ghost {
+    private val mSex: Int;
 
-
-open class Ghost{
-    constructor(name:String){
-
-    }
-    constructor(name:String,number:String){
-
+    constructor(pSex: Int) : super("abc", "007") {
+        mSex = pSex
     }
 }
 
-class BlackGhost: Ghost("Davi","007") {
+fun testExtendsTest1() {
+    println(Tiger("Tom", "007"))
+    println(Tiger3())
 
+    println(Uzi("Jack"))
+    println(Uzi3())
+
+    println(BlackGhost("Alice"))
+
+    println(Tiger2(0))
+    println(Uzi2(0))
+    println(WhiteGhost(1))
 }
-

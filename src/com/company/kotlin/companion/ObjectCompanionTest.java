@@ -12,5 +12,7 @@ public class ObjectCompanionTest {
         A.Companion.bar();
 
         B.She.bar();
+
+
     }
 }
