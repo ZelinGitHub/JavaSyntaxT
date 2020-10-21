@@ -1,7 +1,7 @@
-package com.company.kotlin.`fun`
+package com.company.kotlin.func
 //导入扩展函数
 //使用as修改导入的类或函数的名字
-import com.company.kotlin.`fun`.lastChar as last
+import com.company.kotlin.func.lastChar as last
 
 val ddd="4396瞎子之王".last()
 

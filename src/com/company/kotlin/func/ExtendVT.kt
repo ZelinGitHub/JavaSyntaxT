@@ -1,4 +1,4 @@
-package com.company.kotlin.`fun`
+package com.company.kotlin.func
 
 import java.lang.StringBuilder
 

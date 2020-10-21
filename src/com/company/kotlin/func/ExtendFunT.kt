@@ -1,4 +1,4 @@
-package com.company.kotlin.`fun`
+package com.company.kotlin.func
 
 /**
  * 扩展函数

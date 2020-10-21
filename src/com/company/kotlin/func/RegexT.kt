@@ -1,4 +1,4 @@
-package com.company.kotlin.`fun`
+package com.company.kotlin.func
 
 fun abc() {
     //用正则表达式来拆分字符串
