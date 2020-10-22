@@ -1,14 +1,14 @@
-package com.company.kotlin.clsobj;
+package com.company.kotlin.attr;
 
 public class AttributeTest {
     public static void test() {
-        AttributeT3Kt.getOpCount();
-        AttributeT3Kt.setOpCount(9);
+        TopAttributeTestKt.getOpCount();
+        TopAttributeTestKt.setOpCount(9);
 
-        AttributeT3Kt.getUNIX_LINE_SEPARATOR();
+        TopAttributeTestKt.getUNIX_LINE_SEPARATOR();
 
 
-        String str = AttributeT3Kt.Unix_line_sep;
+        String str = TopAttributeTestKt.Unix_line_sep;
 
         BigAss bigAss = new BigAss();
 

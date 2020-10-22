@@ -1,4 +1,4 @@
-package com.company.kotlin.clsobj
+package com.company.kotlin.attr
 
 var opCount = 0
 
