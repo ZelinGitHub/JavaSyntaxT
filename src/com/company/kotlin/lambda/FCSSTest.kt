@@ -11,7 +11,7 @@ fun omg() {
     val youGiOhList = listOf<YouGiOh>(
             YouGiOh("凯巴", 0)
             , YouGiOh("绞脑汁", 1)
-            , YouGiOh("马利克", 1)
+            , YouGiOh("行子", 1)
             , YouGiOh("贝卡萨斯", 0)
             , YouGiOh("挪亚", 1)
     )

@@ -1,5 +1,6 @@
 package com.company.kotlin.highfun
 
+import com.company.kotlin.lambda.Person
 
 
 fun lpl() {

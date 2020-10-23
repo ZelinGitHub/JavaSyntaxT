@@ -7,7 +7,7 @@ import kotlin.Unit;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.functions.Function1;
 
-import static com.company.kotlin.highfun.HignFunTKt.processTheAnswer;
+import static com.company.kotlin.highfun.HighFuncParamTestKt.processTheAnswer;
 
 public class HignFunT {
     public static void o() {

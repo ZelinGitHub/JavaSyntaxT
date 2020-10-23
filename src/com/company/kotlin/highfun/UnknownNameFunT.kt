@@ -1,5 +1,8 @@
 package com.company.kotlin.highfun
 
+import com.company.kotlin.lambda.Person
+import com.company.kotlin.lambda.people
+
 fun lookForPig(people: List<Person>) {
     //传递一个l匿名函数
     //匿名函数就是lambda，写成了函数形式

@@ -10,7 +10,23 @@ enum class OS {
     WINDOWS, LINUX, MAC, IOS, ANDROID
 }
 
-fun npc() {
+/**
+ * 平台类型抽取为一个参数 os
+ * 扩展函数
+ */
+fun List<SiteVisit>.averageDurationFor(os: OS) =
+        filter { it.os == os }.map(SiteVisit::duration).average()
+
+/**
+ * 参数是lambda
+ */
+fun List<SiteVisit>.averageDurationFor(predicate: (SiteVisit) -> Boolean) =
+//参数是保存了lambda的变量
+        filter(predicate)
+                .map(SiteVisit::duration).average()
+
+
+fun testSysHighFunc() {
     val log = listOf<SiteVisit>(
             SiteVisit("/", 34.0, OS.WINDOWS)
             , SiteVisit("/", 34.0, OS.LINUX)
@@ -46,18 +62,3 @@ fun npc() {
     println(log.averageDurationFor { it.os in setOf<OS>(OS.ANDROID, OS.IOS) })
     println(log.averageDurationFor { it.os == OS.IOS && it.path == "/signup" })
 }
-
-/**
- * 平台类型抽取为一个参数 os
- * 扩展函数
- */
-fun List<SiteVisit>.averageDurationFor(os: OS) =
-        filter { it.os == os }.map(SiteVisit::duration).average()
-
-/**
- * 参数是lambda
- */
-fun List<SiteVisit>.averageDurationFor(predicate: (SiteVisit) -> Boolean) =
-//参数是保存了lambda的变量
-        filter(predicate)
-                .map(SiteVisit::duration).average()

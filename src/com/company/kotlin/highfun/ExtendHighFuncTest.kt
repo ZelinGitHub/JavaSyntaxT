@@ -1,11 +1,23 @@
 package com.company.kotlin.highfun
 
+import java.lang.StringBuilder
+
 
 /**
- * 扩展函数 为集合Collection添加扩展函数
- * 扩展函数不能被子类重写
- * 成员函数优先级大于扩展函数
+ * 扩展函数
  */
+fun String.filter(predicate:(Char)->Boolean):String{
+    val sb= StringBuilder()
+    for(index in 0 until  length){
+        val element=get(index)
+        //如果是想要的元素，predicate是lambda
+        if(predicate(element)){
+            sb.append(element)
+        }
+    }
+    return  sb.toString()
+}
+
 fun<T> Collection<T>.joinToString2(
         separator:String=",",
         prefix:String="",
@@ -26,28 +38,6 @@ fun<T> Collection<T>.joinToString2(
     result.append(postfix)
     return result.toString()
 }
-
-
-fun test2(){
-    val letters= listOf<String>("fuck","asshole","pussy")
-    //使用默认的lambda参数值
-    println(letters.joinToString ())
-    //传入lambda
-    println(letters.joinToString { it.toLowerCase() })
-    //传递命名参数
-    println(letters.joinToString (separator = "! ",postfix = "! ",transform = {it.toUpperCase()}))
-}
-
-//l函数类型参数可空
-fun foo(callback:(()->Unit)?){
-    if(callback!=null){
-        callback()
-    }
-    //安全调用lambda
-    callback?.invoke()
-}
-
-
 fun<T> Collection<T>.joinToString(
         separator:String=",",
         prefix:String="",
@@ -65,11 +55,26 @@ fun<T> Collection<T>.joinToString(
         //调用lambda
         //安全调用
         val str=transform?.invoke(element)
-                //使用空合并运算符 不为空结果是transform?.invoke(element)
-                //为空结果是element.toString()
-        ?:element.toString()
+        //使用空合并运算符 不为空结果是transform?.invoke(element)
+        //为空结果是element.toString()
+                ?:element.toString()
         result.append(str)
     }
     result.append(postfix)
     return result.toString()
 }
+
+
+fun testHighFuncT2(){
+    val letters= listOf<String>("fuck","asshole","pussy")
+    //使用默认的lambda参数值
+    println(letters.joinToString ())
+    //传入lambda
+    println(letters.joinToString { it.toLowerCase() })
+    //传递命名参数
+    println(letters.joinToString (separator = "! ",postfix = "! ",transform = {it.toUpperCase()}))
+}
+
+
+
+
