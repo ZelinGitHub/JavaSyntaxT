@@ -10,23 +10,21 @@ fun alphabet0(): String {
     for (letter in 'A'..'Z') {
         result.append(letter)
     }
-    result.append("\n世最A团战暴毙！")
+    result.append("\nBalaBalaBala！")
     return result.toString()
-
 }
 
 fun alphabet1(): String {
     val stringBuilder = StringBuilder()
     //stringBuilder是接收者
     //参数1是接收者，参数2是lambda，lambda可以放在括号外面
-    //with结构其实是一个函数
     return with(stringBuilder) {
         for (letter in 'A'..'Z') {
             //this访问接收者
             this.append(letter)
         }
         //this可以省略
-        append("\n世界第一吹几把！")
+        append("\nBalaBalaBala！")
         //lambda最后一个表达式是返回值
         this.toString()
     }
@@ -36,12 +34,12 @@ fun alphabet1(): String {
  * 表达式函数体
  * with参数1是接收者，参数2是lambda
  */
-fun aplhabet2() = with(StringBuilder()) {
+fun alphabet2() = with(StringBuilder()) {
     for (letter in 'A'..'Z') {
         //this访问接收者 可以省略
         append(letter)
     }
-    append("\n简灯笼8强！")
+    append("\nBalaBalaBala！")
     toString()
 }
 
@@ -54,7 +52,7 @@ fun alphabet3() = StringBuilder().apply {
         //this访问接收者 可以省略
         append(letter)
     }
-    append("\n不打了回家洗澡！")
+    append("\nBalaBalaBala！")
 }.toString()
 
 fun alphabet4() = buildString {
@@ -62,5 +60,5 @@ fun alphabet4() = buildString {
         //this访问接收者 可以省略
         append(letter)
     }
-    append("\n网线坏了！")
+    append("\nBalaBalaBala！")
 }
