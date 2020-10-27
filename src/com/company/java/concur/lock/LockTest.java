@@ -30,7 +30,7 @@ public class LockTest {
             e.printStackTrace();
         }
 
-        Condition condition= reentrantLock.newCondition();
+        Condition condition = reentrantLock.newCondition();
 
         try {
             condition.await();
@@ -39,7 +39,7 @@ public class LockTest {
         }
 
         try {
-            condition.await(20,TimeUnit.SECONDS);
+            condition.await(20, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -53,8 +53,8 @@ public class LockTest {
 
         Lock readLock = reentrantReadWriteLock.readLock();
         Lock writeLock = reentrantReadWriteLock.writeLock();
-        Condition conditionX=readLock.newCondition();
-        Condition conditionY=writeLock.newCondition();
+        Condition conditionX = readLock.newCondition();
+        Condition conditionY = writeLock.newCondition();
 
         readLock.lock();
         writeLock.lock();
@@ -62,5 +62,7 @@ public class LockTest {
         readLock.tryLock();
         writeLock.tryLock();
     }
+
+
 
 }

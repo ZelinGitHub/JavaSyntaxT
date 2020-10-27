@@ -1,37 +1,39 @@
 package com.company.java.concur.lock;
 
-public class InnerLockTest {
+public class InnerConditionTest {
 
+    private int mMoney = 0;
 
-    public static void test(){
-
-
+    public void test() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                fuck(0);
+                mMoney = 0;
+                fuck();
             }
         }).start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                fuck(20000);
+                mMoney = 10000;
+                fuck();
             }
         }).start();
     }
 
-    private static void fuck(int pMoney) {
-        synchronized (InnerLockTest.class){
-            while (pMoney <=2000){
+    private void fuck() {
+        synchronized (this) {
+            while (mMoney <= 2000) {
                 try {
-                    InnerLockTest.class.wait();
+                    this.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }
             System.out.println("hot fucking now");
-            InnerLockTest.class.notifyAll();
+            this.notifyAll();
         }
     }
 }
