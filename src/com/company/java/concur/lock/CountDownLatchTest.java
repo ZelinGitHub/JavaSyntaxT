@@ -8,31 +8,37 @@ public class CountDownLatchTest {
 
     private static final CountDownLatch sLatch = new CountDownLatch(3);
 
-    private static int mData = 0;
 
     public static void test() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("线程：" + Thread.currentThread().getId() + "，准备数据：" + mData);
+                System.out.println("线程：" + Thread.currentThread().getId() + "，准备数据");
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException pE) {
                     pE.printStackTrace();
                     Thread.currentThread().interrupt();
                 }
-                mData = 1000;
-                System.out.println("线程：" + Thread.currentThread().getId() + "，数据准备结束：" + mData);
+                System.out.println("线程：" + Thread.currentThread().getId() + "，数据准备结束");
                 sLatchGate.countDown();
             }
         }).start();
-        try {
-            sLatchGate.await();
-        } catch (InterruptedException pE) {
-            pE.printStackTrace();
-            Thread.currentThread().interrupt();
+
+        for (int i = 0; i < 3; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        sLatchGate.await();
+                    } catch (InterruptedException pE) {
+                        pE.printStackTrace();
+                        Thread.currentThread().interrupt();
+                    }
+                    System.out.println("线程：" + Thread.currentThread().getId() + "，使用数据");
+                }
+            }).start();
         }
-        System.out.println("线程：" + Thread.currentThread().getId() + "，使用数据：" + mData);
     }
 
     public static void test2() {

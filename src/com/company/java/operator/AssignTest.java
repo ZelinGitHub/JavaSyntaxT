@@ -1,6 +1,6 @@
 package com.company.java.operator;
 
-public class OperatorTest {
+public class AssignTest {
     public static void test() {
         int a = 0;
         int b = 0;
