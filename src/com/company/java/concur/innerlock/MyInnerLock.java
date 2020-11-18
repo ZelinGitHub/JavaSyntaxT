@@ -1,51 +1,108 @@
 package com.company.java.concur.innerlock;
 
 public class MyInnerLock {
-
-    public synchronized void fuck() {
-        System.out.println("fuck start");
-        System.out.println("fuck 0");
-        System.out.println("fuck 1");
-        System.out.println("fuck 2");
-        System.out.println("fuck end");
+    public int mNum = 0;
+    public void fuck() throws InterruptedException {
+        mNum+=100;
+        Thread.sleep(1000);
+        System.out.println("线程"+Thread.currentThread().getId()+"：num="+mNum);
     }
-
-    public synchronized void lick() {
-        System.out.println("lick start");
-        System.out.println("lick 0");
-        System.out.println("lick 1");
-        System.out.println("lick 2");
-        System.out.println("lick end");
-    }
-
-    public synchronized void suck() {
-        System.out.println("suck start");
-        System.out.println("suck 0");
-        System.out.println("suck 1");
-        System.out.println("suck 2");
-        System.out.println("suck end");
+    public synchronized void fuck2() throws InterruptedException {
+        mNum+=100;
+        Thread.sleep(1000);
+        System.out.println("线程"+Thread.currentThread().getId()+"：num="+mNum);
     }
 
     public static void test() {
         MyInnerLock myInnerLock = new MyInnerLock();
 
-        new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                myInnerLock.fuck();
+                try {
+                    myInnerLock.fuck();
+                } catch (InterruptedException pE) {
+                    pE.printStackTrace();
+                }
             }
-        }).start();
-        new Thread(new Runnable() {
+        });
+        Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                myInnerLock.lick();
+                try {
+                    myInnerLock.fuck();
+                } catch (InterruptedException pE) {
+                    pE.printStackTrace();
+                }
             }
-        }).start();
-        new Thread(new Runnable() {
+        });
+        thread.start();
+        thread2.start();
+    }
+
+    public void lick() throws InterruptedException {
+        System.out.println("第一步");
+        Thread.sleep(2000);
+        System.out.println("第二步");
+    }
+    public synchronized void lick2() throws InterruptedException {
+        System.out.println("第一步");
+        Thread.sleep(2000);
+        System.out.println("第二步");
+    }
+
+
+
+    public static void test2() {
+        MyInnerLock myInnerLock = new MyInnerLock();
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                myInnerLock.suck();
+                try {
+                    myInnerLock.lick2();
+                } catch (InterruptedException pE) {
+                    pE.printStackTrace();
+                }
             }
-        }).start();
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    myInnerLock.lick2();
+                } catch (InterruptedException pE) {
+                    pE.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        thread2.start();
+    }
+
+    public static void test3() {
+        MyInnerLock myInnerLock = new MyInnerLock();
+        MyInnerLock myInnerLock2 = new MyInnerLock();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    myInnerLock.lick2();
+                } catch (InterruptedException pE) {
+                    pE.printStackTrace();
+                }
+            }
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    myInnerLock2.lick2();
+                } catch (InterruptedException pE) {
+                    pE.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        thread2.start();
     }
 }

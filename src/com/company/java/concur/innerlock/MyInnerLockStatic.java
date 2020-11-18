@@ -1,6 +1,6 @@
 package com.company.java.concur.innerlock;
 
-public class MyInnerClsLock {
+public class MyInnerLockStatic {
 
     public synchronized static void fuck() {
         System.out.println("fuck start");
