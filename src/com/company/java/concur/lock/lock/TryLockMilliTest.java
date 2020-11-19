@@ -1,13 +1,9 @@
 package com.company.java.concur.lock.lock;
 
-import com.company.java.concur.lock.CountDownLatchTest;
-
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class TryLockMilliTest {
 
