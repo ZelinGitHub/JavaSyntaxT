@@ -9,11 +9,13 @@ public class SyncChunkTest3 {
             @Override
             public void run() {
                 synchronized (lock1) {
-                    System.out.println("thread1 start");
-                    System.out.println("thread1 0");
-                    System.out.println("thread1 1");
-                    System.out.println("thread1 2");
-                    System.out.println("thread1 end");
+                    try {
+                        System.out.println("thread1 start");
+                        Thread.sleep(2000);
+                        System.out.println("thread1 end");
+                    } catch (InterruptedException pE) {
+                        pE.printStackTrace();
+                    }
                 }
             }
         }).start();
@@ -21,11 +23,49 @@ public class SyncChunkTest3 {
             @Override
             public void run() {
                 synchronized (lock2) {
-                    System.out.println("thread2 start");
-                    System.out.println("thread2 0");
-                    System.out.println("thread2 1");
-                    System.out.println("thread2 2");
-                    System.out.println("thread2 end");
+                    try {
+                        System.out.println("thread2 start");
+                        Thread.sleep(2000);
+                        System.out.println("thread2 end");
+                    } catch (InterruptedException pE) {
+                        pE.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private static String lock;
+
+    public static void test2() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                lock = "abc";
+                synchronized (lock) {
+                    try {
+                        System.out.println("thread1 start");
+                        Thread.sleep(2000);
+                        System.out.println("thread1 end");
+                    } catch (InterruptedException pE) {
+                        pE.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(50);
+                    lock = "bcd";
+                    synchronized (lock) {
+                        System.out.println("thread2 start");
+                        Thread.sleep(2000);
+                        System.out.println("thread2 end");
+                    }
+                } catch (InterruptedException pE) {
+                    pE.printStackTrace();
                 }
             }
         }).start();

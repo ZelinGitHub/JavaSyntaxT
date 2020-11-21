@@ -9,11 +9,13 @@ public class SyncChunkTest2 {
             @Override
             public void run() {
                 synchronized (myLock) {
-                    System.out.println("die start");
-                    System.out.println("die 0");
-                    System.out.println("die 1");
-                    System.out.println("die 2");
-                    System.out.println("die end");
+                    try {
+                        System.out.println("die start");
+                        Thread.sleep(2000);
+                        System.out.println("die end");
+                    } catch (InterruptedException pE) {
+                        pE.printStackTrace();
+                    }
                 }
             }
         }).start();
@@ -28,11 +30,13 @@ public class SyncChunkTest2 {
 
     static class MyLock {
         public synchronized void fuck() {
-            System.out.println("fuck start");
-            System.out.println("fuck 0");
-            System.out.println("fuck 1");
-            System.out.println("fuck 2");
-            System.out.println("fuck end");
+            try {
+                System.out.println("fuck start");
+                Thread.sleep(2000);
+                System.out.println("fuck end");
+            } catch (InterruptedException pE) {
+                pE.printStackTrace();
+            }
         }
     }
 }

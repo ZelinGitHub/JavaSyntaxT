@@ -1,15 +1,15 @@
 package com.company;
 
 
-import com.company.java.concur.innerlock.*;
-import com.company.java.concur.lock.lock.LockExceptTest;
-import com.company.java.concur.lock.reentrant.ReLockFairTest;
-import com.company.java.datatype.StringTest;
+import com.company.java.concur.innerlock.MyLockAtomic;
+import com.company.java.concur.unsafe.AtomicIntegerTest;
+import com.company.java.concur.unsafe.AtomicIntegerTest2;
+import com.company.java.concur.vol.VolatileTest3;
 
 public class Main {
 
     public static void main(String[] args) {
-        SyncChunkTest3.test();
+        MyLockAtomic.test();
     }
 
 
