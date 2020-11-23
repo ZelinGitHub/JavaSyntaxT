@@ -1,4 +1,4 @@
-package com.company.java.concur.threadcom;
+package com.company.java.concur.threadcom.innercon;
 
 public class InnerConTest {
     private final String mLock = "abc";
