@@ -1,4 +1,4 @@
-package com.company.java.concur.lock.reentrant;
+package com.company.java.concur.threadcom;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;

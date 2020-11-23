@@ -1,6 +1,6 @@
-package com.company.java.concur.innerlock;
+package com.company.java.concur.threadcom;
 
-public class InnerConditionTest {
+public class InnerConSpinTest {
 
     private int mMoney = 0;
 
