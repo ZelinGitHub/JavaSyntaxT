@@ -1,16 +1,16 @@
 package com.company.java.concur.threadcom.innercon;
 
-public class InnerConTest {
-    private final String mLock = "abc";
+public class WaitNotifyTest {
 
-    public void fuck() {
+    public static void test() {
+        final String lock = "abc";
         new Thread(new Runnable() {
             @Override
             public void run() {
-                synchronized (mLock) {
+                synchronized (lock) {
                     System.out.println("线程1：我阻塞了");
                     try {
-                        mLock.wait();
+                        lock.wait();
                         System.out.println("线程1：我醒来了");
                     } catch (InterruptedException pE) {
                         pE.printStackTrace();
@@ -20,7 +20,7 @@ public class InnerConTest {
             }
         }).start();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException pE) {
             pE.printStackTrace();
             Thread.currentThread().interrupt();
@@ -28,15 +28,11 @@ public class InnerConTest {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                synchronized (mLock) {
-                        System.out.println("线程2：我要唤醒线程1");
-                        mLock.notifyAll();
+                synchronized (lock){
+                    System.out.println("线程2：我要唤醒线程1");
+                    lock.notifyAll();
                 }
             }
         }).start();
-    }
-    public static void test() {
-        InnerConTest innerConTest = new InnerConTest();
-        innerConTest.fuck();
     }
 }

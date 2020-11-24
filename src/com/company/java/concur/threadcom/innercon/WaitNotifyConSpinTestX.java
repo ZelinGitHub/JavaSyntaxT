@@ -1,6 +1,6 @@
 package com.company.java.concur.threadcom.innercon;
 
-public class InnerConTest3 {
+public class WaitNotifyConSpinTestX {
 
     private int mMoney = 0;
 

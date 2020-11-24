@@ -2,14 +2,12 @@ package com.company;
 
 
 import com.company.java.concur.thread.SleepTest;
-import com.company.java.concur.threadcom.innercon.InnerConTest2;
-import com.company.java.concur.threadcom.innercon.WaitAutoUnlockTest;
+import com.company.java.concur.threadcom.innercon.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        SleepTest.test();
+        WaitNotifyConSpinTest2.test();
     }
-
 
 }
