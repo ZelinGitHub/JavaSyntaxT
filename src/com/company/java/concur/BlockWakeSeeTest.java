@@ -1,6 +1,8 @@
-package com.company.java.concur.innerlock;
+package com.company.java.concur;
 
-public class MyInnerLockSee {
+import com.company.java.concur.innerlock.MyInnerLockSee;
+
+public class BlockWakeSeeTest {
     private boolean mIsRunning = true;
 
     private final String mLock = "abc";
@@ -25,57 +27,20 @@ public class MyInnerLockSee {
         mIsRunning = false;
     }
 
-    public void fuck() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("线程:1：开始运行");
-                while (mIsRunning) {
-                    synchronized (mLock) {
-                    }
-                }
-                System.out.println("线程:1：停止运行");
-            }
-        }).start();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException pE) {
-            pE.printStackTrace();
-            Thread.currentThread().interrupt();
-        }
-        System.out.println("线程:2：设置mIsRunning为false");
-        mIsRunning = false;
-    }
-
-    public void kick() {
+    public void dick() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("线程:1：开始运行");
                 synchronized (mLock) {
                     while (mIsRunning) {
-                    }
-                }
-                System.out.println("线程:1：停止运行");
-            }
-        }).start();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException pE) {
-            pE.printStackTrace();
-            Thread.currentThread().interrupt();
-        }
-        System.out.println("线程:2：设置mIsRunning为false");
-        mIsRunning = false;
-    }
-
-    public void sick() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("线程:1：开始运行");
-                synchronized (mLock) {
-                    while (mIsRunning) {
+                        try {
+                            System.out.println("线程:1：开始阻塞，mIsRunning值为" + mIsRunning);
+                            mLock.wait();
+                            System.out.println("线程:1：解除阻塞，mIsRunning值为" + mIsRunning);
+                        } catch (InterruptedException pE) {
+                            pE.printStackTrace();
+                        }
                     }
                 }
                 System.out.println("线程:1：停止运行");
@@ -90,28 +55,49 @@ public class MyInnerLockSee {
         synchronized (mLock) {
             System.out.println("线程:2：设置mIsRunning为false");
             mIsRunning = false;
+            mLock.notifyAll();
         }
     }
 
+    public void suck() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("线程:1：开始运行");
+                while (mIsRunning) {
+                    try {
+                        System.out.println("线程:1：开始阻塞，mIsRunning值为" + mIsRunning);
+                        Thread.sleep(5000);
+                        System.out.println("线程:1：解除阻塞，mIsRunning值为" + mIsRunning);
+                    } catch (InterruptedException pE) {
+                        pE.printStackTrace();
+                    }
+                }
+                System.out.println("线程:1：停止运行");
+            }
+        }).start();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException pE) {
+            pE.printStackTrace();
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("线程:2：设置mIsRunning为false");
+        mIsRunning = false;
+    }
 
     public static void test() {
-        MyInnerLockSee myInnerLockSee = new MyInnerLockSee();
-        myInnerLockSee.sink();
+        BlockWakeSeeTest blockWakeSeeTest = new BlockWakeSeeTest();
+        blockWakeSeeTest.sink();
     }
 
     public static void test2() {
-        MyInnerLockSee myInnerLockSee = new MyInnerLockSee();
-        myInnerLockSee.fuck();
+        BlockWakeSeeTest blockWakeSeeTest = new BlockWakeSeeTest();
+        blockWakeSeeTest.dick();
     }
 
     public static void test3() {
-        MyInnerLockSee myInnerLockSee = new MyInnerLockSee();
-        myInnerLockSee.kick();
+        BlockWakeSeeTest blockWakeSeeTest = new BlockWakeSeeTest();
+        blockWakeSeeTest.suck();
     }
-
-    public static void test4() {
-        MyInnerLockSee myInnerLockSee = new MyInnerLockSee();
-        myInnerLockSee.sick();
-    }
-
 }
