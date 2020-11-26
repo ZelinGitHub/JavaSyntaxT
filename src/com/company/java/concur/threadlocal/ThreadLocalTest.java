@@ -2,11 +2,11 @@ package com.company.java.concur.threadlocal;
 
 public class ThreadLocalTest {
 
-    private static void testThreadLocal() {
+    public static void test() {
         ThreadLocal<String> stringThreadLocal = new ThreadLocal<>();
-        stringThreadLocal.set("h");
-        stringThreadLocal.get();
-        stringThreadLocal.remove();
+        System.out.println(stringThreadLocal.get());
+        stringThreadLocal.set("fuck u");
+        System.out.println(stringThreadLocal.get());
     }
 
 }
