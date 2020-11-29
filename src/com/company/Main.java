@@ -17,7 +17,7 @@ import com.company.java.concur.threadcom.condition.ReentrantConSortTest;
 public class Main {
 
     public static void main(String[] args) {
-        WriteLockTest.test();
+        WriteReadLockTest.test2();
     }
 
 }
