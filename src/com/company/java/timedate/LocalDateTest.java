@@ -1,5 +1,6 @@
 package com.company.java.timedate;
 
+import java.sql.Date;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjuster;
@@ -101,5 +102,11 @@ public class LocalDateTest {
 
         LocalDate firstDayOfNextYear=localDate.with(TemporalAdjusters.firstDayOfNextYear());
         LocalDate lastDayOfYear=localDate.with(TemporalAdjusters.lastDayOfYear());
+    }
+
+    public static void test5(){
+        LocalDate localDate=LocalDate.now();
+        java.sql.Date date=java.sql.Date.valueOf(localDate);
+        localDate=date.toLocalDate();
     }
 }

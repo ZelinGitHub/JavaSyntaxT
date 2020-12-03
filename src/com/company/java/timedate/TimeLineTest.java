@@ -1,7 +1,9 @@
 package com.company.java.timedate;
 
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Date;
 
 public class TimeLineTest {
     public static void test() {
@@ -25,4 +27,14 @@ public class TimeLineTest {
         System.out.println("时间段的毫秒数为" + millis);
         System.out.println("时间段的秒数为" + seconds);
     }
+
+    public static void test3() {
+        Instant instant = Instant.now();
+        Date date = Date.from(instant);
+        instant = date.toInstant();
+
+        Timestamp timestamp = Timestamp.from(instant);
+        instant = timestamp.toInstant();
+    }
+
 }
