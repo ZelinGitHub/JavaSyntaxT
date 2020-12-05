@@ -7,14 +7,15 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerScheduleOnceTest {
+public class TimerSimpleOnOnceTest {
     //Timer安排一个任务
-    public static void test() {
-
+    public static void test1() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.now();
-        System.out.println("主线程：任务计划执行时间为"
+        System.out.println("主线程：当前时间为"
                 + localTime.format(dateTimeFormatter)
+                +"，计划任务执行时间为"
+                +localTime.plusSeconds(10).format(dateTimeFormatter)
         );
         Instant instant = Instant.now().plusSeconds(10);
         Timer timer = new Timer("线程1");
@@ -34,8 +35,10 @@ public class TimerScheduleOnceTest {
     public static void test2() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.now();
-        System.out.println("主线程：任务计划执行时间为"
+        System.out.println("主线程：当前时间为"
                 + localTime.format(dateTimeFormatter)
+                +"，计划任务执行时间为"
+                +localTime.plusSeconds(10).format(dateTimeFormatter)
         );
         Instant instant = Instant.now().plusSeconds(10);
 
@@ -58,8 +61,10 @@ public class TimerScheduleOnceTest {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.now();
-        System.out.println("主线程：任务计划执行时间为"
+        System.out.println("主线程：当前时间为"
                 + localTime.format(dateTimeFormatter)
+                +"，计划任务执行时间为"
+                +localTime.minusSeconds(10).format(dateTimeFormatter)
         );
         Instant instant = Instant.now().minusSeconds(10);
 
@@ -81,14 +86,14 @@ public class TimerScheduleOnceTest {
     public static void test4() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.now();
-        System.out.println("主线程：任务计划执行时间为"
+        System.out.println("主线程：当前时间为"
                 + localTime.format(dateTimeFormatter)
+                +"，计划任务执行时间为"
+                +localTime.plusSeconds(10).format(dateTimeFormatter)
         );
         Instant instant1 = Instant.now().plusSeconds(10);
         Instant instant2 = instant1.plusSeconds(10);
         Instant instant3 = instant2.plusSeconds(10);
-
-
         Timer timer = new Timer("线程1", false);
         timer.schedule(new TimerTask() {
             @Override
