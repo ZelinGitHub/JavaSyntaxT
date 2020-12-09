@@ -90,7 +90,7 @@ public class ThreadLocalTest2 {
     }
 
 
-    public static void test() {
+    public static void test1() {
         ThreadLocalTest2 threadLocalTest2 = new ThreadLocalTest2();
         threadLocalTest2.lick();
     }
