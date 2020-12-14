@@ -26,12 +26,15 @@ fun testLambdaCollectTest() {
     //使用默认参数名称it代替命名参数
     //当前只有一个参数的lambda，参数类型可以推导出来，就可以使用it
     //it代替了p:MingKai->p.age
-    mingKai.maxBy { it.age }
+    mingKai.maxBy {
+        it.age
+    }
 
 
     val getAge = { p: MingKai -> p.age }
 
     mingKai.maxBy(getAge)
+
 
 
 

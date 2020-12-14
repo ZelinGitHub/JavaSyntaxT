@@ -43,7 +43,7 @@ fun testHighFuncReturnTest() {
     println("Shipping costs ${calculator(3)}")
 
 
-    val constacts = listOf<Person2>(Person2("路飞", "蒙奇", "110"), Person2("索隆", "赏金猎人", "110"))
+    val contacts = listOf<Person2>(Person2("路灯", "蒙奇", "110"), Person2("索道", "金", "110"))
     val contactListFilters = ContactListFilters()
     //接收者contactListFilters
     with(contactListFilters) {
@@ -53,5 +53,5 @@ fun testHighFuncReturnTest() {
         onlyWithPhoneNumber = true
     }
     //使用getPredicate返回的lambda传递参数
-    println(constacts.filter(contactListFilters.getPredicate()))
+    println(contacts.filter(contactListFilters.getPredicate()))
 }

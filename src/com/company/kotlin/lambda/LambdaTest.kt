@@ -14,7 +14,9 @@ fun testLambdaTest() {
     sum(2, 4)
 
     //run函数执行传递过来的lambda
-    run { println(42) }
+    run { println(42)
+
+    }
 
 
     //最后一个表达式就是lambda的结果
@@ -24,5 +26,10 @@ fun testLambdaTest() {
     }
     println(xiZaoGou(1, 2))
 
+
+}
+
+fun testLambdaTest2() {
+    println({ -> 3 }())
 
 }

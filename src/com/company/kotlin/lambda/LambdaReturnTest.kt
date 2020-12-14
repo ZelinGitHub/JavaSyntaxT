@@ -7,6 +7,8 @@ data class LiveStock(val name: String, val age: Int)
 val people = listOf<LiveStock>(LiveStock("Doctor Xi", 33), LiveStock("Pig", 11))
 
 
+
+
 fun lookForSb(liveStock: List<LiveStock>) {
     liveStock.forEach {
         if (it.name == "Doctor Xi") {
@@ -51,4 +53,16 @@ fun gcgd(){
             this@sb.append(this.toString())
         }
     })
+
+}
+inline fun kiki(a:(x:String)->Unit){
+    println(a("abc"))
+}
+fun opgg(){
+    kiki {
+        x->
+        println(x)
+        return
+    }
+
 }

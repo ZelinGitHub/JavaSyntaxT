@@ -7,14 +7,20 @@ class Bread(val name: String, val age: Int) {
     }
 }
 
-
-fun testMemberReference() {
-
+fun testMemberReference1(){
 
     //引用属性
     val getAge = Bread::age
     //等价于下面的lambda表达式
     val getAge2 = { bread: Bread -> bread.age }
+
+
+
+}
+
+fun testMemberReference2() {
+
+
 
 
     //引用函数
@@ -27,7 +33,6 @@ fun testMemberReference() {
 
     (Bread::fuck)(bread,1,"black")
 
-    getAge(bread)
     fuck(bread,0,"red")
 
 
