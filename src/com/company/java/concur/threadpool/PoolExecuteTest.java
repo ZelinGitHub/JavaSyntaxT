@@ -11,12 +11,10 @@ public class PoolExecuteTest {
                 System.out.println("我是提交给线程池的任务");
             }
         });
-
-
     }
 
     public static void test2() {
-        LinkedBlockingQueue<Runnable> linkedBlockingQueue = new LinkedBlockingQueue<>();
+        LinkedBlockingQueue<Runnable> linkedBlockingQueue = new LinkedBlockingQueue<>(1);
 
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 //参数1核心线程数
@@ -30,13 +28,23 @@ public class PoolExecuteTest {
                 //参数5阻塞队列
                 , linkedBlockingQueue
         );
-        threadPoolExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        });
+        //提交三个任务
+        //第一个任务，创建核心线程执行
+        //第二个任务，放到阻塞队列
+        //第三个任务，创建非核心线程执行
+        //核心线程，执行完任务1，从阻塞队列取出任务2执行
+        //非核心线程，执行完任务3，从阻塞队列取出任务，阻塞10s
+        //核心线程，执行完任务2，从阻塞队列取出任务，阻塞10s
 
-
+        for(int i=0;i<3;i++){
+            threadPoolExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    long tId=Thread.currentThread().getId();
+                    System.out.println("线程"+tId+"：执行任务");
+                }
+            });
+        }
     }
 }
