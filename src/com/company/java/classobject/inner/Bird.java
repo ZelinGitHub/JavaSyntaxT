@@ -8,8 +8,14 @@ public class Bird {
             System.out.println("fly");
         }
 
-        public void swim() {
+        public static void swim() {
             System.out.println("swim");
         }
+    }
+
+    public static void test(){
+        Bird.Chick chick = new Bird.Chick();
+        chick.fly();
+        Bird.Chick.swim();
     }
 }

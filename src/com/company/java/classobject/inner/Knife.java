@@ -4,7 +4,11 @@ public class Knife {
     class Head {
     }
 
-    public void test() {
+    public void fuck() {
         Head head = new Head();
+    }
+
+    public static void test() {
+        Knife.Head head;
     }
 }
