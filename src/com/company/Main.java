@@ -4,6 +4,7 @@ package com.company;
 import com.company.java.concur.big3.Big3AtomicLongTest;
 import com.company.java.concur.big3.Big3SeeTest;
 import com.company.java.concur.big3.Big3SeeYieldTest;
+import com.company.java.concur.innerlock.SyncChunkTestReturn;
 import com.company.java.concur.lock.other.SemaphoreTest;
 import com.company.java.concur.threadpool.PoolExecuteTest;
 import com.company.java.concur.threadpool.PoolSubmitTest;
@@ -14,7 +15,7 @@ import static com.company.kotlin.lambda.LambdaTestKt.testLambdaTest2;
 public class Main {
 
     public static void main(String[] args) {
-        PoolExecuteTest.test2();
+        SyncChunkTestReturn.test();
     }
 
 }
