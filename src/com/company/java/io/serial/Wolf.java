@@ -1,4 +1,4 @@
-package com.company.java.io;
+package com.company.java.io.serial;
 
 
 import java.io.Serializable;
