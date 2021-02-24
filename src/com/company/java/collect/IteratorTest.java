@@ -14,7 +14,13 @@ public class IteratorTest {
         iterator.remove();
     }
 
-    public void kick() {
+
+    public void lick() {
+        List<Apple> list = new LinkedList<>();
+        Iterator<Apple> iterator = list.listIterator();
+    }
+
+    public void traversalListByIterator() {
         List<String> list = new ArrayList<>();
         list.add("Hitler");
         list.add("Mike");
@@ -28,13 +34,21 @@ public class IteratorTest {
         }
     }
 
-    public void lick() {
-        List<Apple> list2 = new LinkedList<>();
-        Iterator<Apple> iterator1 = list2.listIterator();
+    public void traversalListByStringFor() {
+        List<String> list = new ArrayList<>();
+        list.add("Hitler");
+        list.add("Mike");
+        list.add("Sara");
+        list.add("Linda");
+        list.add("Jinx");
+        for (String name : list) {
+            System.out.println(name);
+        }
     }
+
 
     public static void test() {
         IteratorTest iteratorTest = new IteratorTest();
-        iteratorTest.kick();
+        iteratorTest.traversalListByStringFor();
     }
 }

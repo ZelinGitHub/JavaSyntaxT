@@ -1,12 +1,15 @@
 package com.company.java.collect;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class MapTest {
-    public static void test(){
-        Map map1=new HashMap<>();
-        Map map2=new TreeMap<>();
+    public void fuck() {
+        Map<String, String> map1 = new HashMap<>();
+        Map<String, String> map2 = new TreeMap<>();
+    }
+
+    public void getWeakHashSet() {
+        Map<Object, Boolean> map = new WeakHashMap<>();
+        Set<Object> weakHashSet = Collections.newSetFromMap(map);
     }
 }
