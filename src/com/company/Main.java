@@ -10,6 +10,8 @@ import com.company.java.concur.lock.lock.ReentrantLockReturnTest;
 import com.company.java.concur.lock.other.SemaphoreTest;
 import com.company.java.concur.threadpool.PoolExecuteTest;
 import com.company.java.concur.threadpool.PoolSubmitTest;
+import com.company.java.designmode.proxy.dynamicproxy.DynamicProxyTest;
+import com.company.java.designmode.proxy.staticproxy.StaticProxyTest;
 import com.company.java.exception.ExceptionTest;
 
 import static com.company.kotlin.lambda.LambdaTestKt.testLambdaTest2;
@@ -17,7 +19,7 @@ import static com.company.kotlin.lambda.LambdaTestKt.testLambdaTest2;
 public class Main {
 
     public static void main(String[] args) {
-        IteratorTest.test();
+        DynamicProxyTest.test();
     }
 
 }

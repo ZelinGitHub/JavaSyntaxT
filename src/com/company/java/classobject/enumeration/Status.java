@@ -1,4 +1,4 @@
-package com.company.java.enumeration;
+package com.company.java.classobject.enumeration;
 
 public enum Status {
     UNCONFIRMED

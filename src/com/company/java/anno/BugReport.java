@@ -1,6 +1,6 @@
 package com.company.java.anno;
 
-import com.company.java.enumeration.Status;
+import com.company.java.classobject.enumeration.Status;
 
 
 public @interface BugReport {

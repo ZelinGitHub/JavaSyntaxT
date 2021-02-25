@@ -1,10 +1,10 @@
-package com.company.java.designmode.proxy;
+package com.company.java.designmode.proxy.dynamicproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public class MyInvocationHandler implements InvocationHandler {
-    private Object mObject;
+    private final Object mObject;
 
     public MyInvocationHandler(Object pObject) {
         mObject = pObject;
