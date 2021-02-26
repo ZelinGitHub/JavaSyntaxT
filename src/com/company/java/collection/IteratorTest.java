@@ -1,9 +1,6 @@
-package com.company.java.collect;
+package com.company.java.collection;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class IteratorTest {
     public void fuck() {
@@ -16,8 +13,15 @@ public class IteratorTest {
 
 
     public void lick() {
-        List<Apple> list = new LinkedList<>();
-        Iterator<Apple> iterator = list.listIterator();
+        List<String> list = new LinkedList<String>();
+        ListIterator<String> listIterator = list.listIterator();
+        //添加元素后，列表迭代器也会移动到刚添加的元素位置
+        listIterator.add("madagascar");
+        listIterator.add("galapagos");
+        listIterator.add("komodo");
+        for (String str:list){
+            System.out.println(str);
+        }
     }
 
     public void traversalListByIterator() {
@@ -49,6 +53,6 @@ public class IteratorTest {
 
     public static void test() {
         IteratorTest iteratorTest = new IteratorTest();
-        iteratorTest.traversalListByStringFor();
+        iteratorTest.lick();
     }
 }

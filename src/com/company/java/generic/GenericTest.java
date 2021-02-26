@@ -10,15 +10,12 @@ public class GenericTest {
         System.out.println("FUck " + girl.toString());
     }
 
-    public void dig() {
-        this.<String>kick("apple");
-
-    }
 
     public static <G> void lick(G pG) {
         System.out.println("Lick " + pG.toString());
     }
 
+    //类型变量G的值限定为Father或Father的子类型
     public static <G extends Father> void hit(G pG) {
         System.out.println("Lick " + pG.toString());
     }
@@ -43,18 +40,56 @@ public class GenericTest {
 
     }
 
-    public static void test() {
-        GenericTest genericTest = new GenericTest();
-        genericTest.<String>kick("Lady");
-        GenericTest.<String>lick("Asshole");
+    public void dig() {
+        //必须写明调用者，才可以传递类型参数
+        this.<String>kick("apple");
+        //不传递类型参数，编译器会尝试推断泛型参数的类型
+        kick("orange");
+    }
 
+    public void fight() {
+        GenericTest genericTest = new GenericTest();
+        //必须写明调用者，才可以传递类型参数
+        genericTest.<String>kick("Lady");
+        //不传递类型参数，编译器会尝试推断泛型参数的类型
         genericTest.kick("banana");
+    }
+
+    public void suck() {
+        //必须写明调用者，才可以传递类型参数
+        GenericTest.<String>lick("Asshole");
+        //不传递类型参数，编译器会尝试推断泛型参数的类型
         GenericTest.lick("meat");
+    }
+
+    public void hate() {
+        //定义变量时，应该传递类型参数，如果不传递会出现警告
+        Pair pair;
+        Pair<String> pair2;
+        Pair<Integer> pair1 = new Pair<Integer>();
+        //构造方法的类型参数可以省略，只剩一个尖括号
+        Pair<Long> pair3 = new Pair<>();
+        List<String> list;
+        List<String> list2 = new ArrayList<>();
+    }
+
+    public void like() {
+        Pair<String> pair = new Pair<String>("Galapagos", "Madagascar");
+        //内部转换Object为String
+        String galapagos = pair.getFirst();
+        //内部转换Object为String
+        String madagascar = pair.getSecond();
+    }
+
+    public void bent() {
+        GenericTest.<Child>hit(new Child());
+        GenericTest.<Father>hit(new Father());
+    }
+
+    public static void test() {
+
         List<String> list = new ArrayList<>();
 
-        GenericTest.<Child>hit(new Child());
-
-        GenericTest.<Father>hit(new Father());
 
         List<String> list1 = new ArrayList<String>();
 
@@ -109,18 +144,18 @@ public class GenericTest {
         Object object4 = cola1.mT;//正确，? super Child 是Object的子类型
 
         Coke<? super Object> coke2;
-        Coke<? super String>  coke3;
+        Coke<? super String> coke3;
 
-        Cola<?> cola3=new Cola<>();
+        Cola<?> cola3 = new Cola<>();
 
 
-        Object object5=cola3.mT;
-        Father father2=cola3.mT;
-        cola3.mT=null;
+        Object object5 = cola3.mT;
+        Father father2 = cola3.mT;
+        cola3.mT = null;
 
-        Xuebi<? extends Father> xuebi=new Xuebi<>();
-        Father father3=xuebi.mT;
-        Child child=xuebi.mT;
+        Xuebi<? extends Father> xuebi = new Xuebi<>();
+        Father father3 = xuebi.mT;
+        Child child = xuebi.mT;
 //        GoodChild goodChild=xuebi.mT;
     }
 

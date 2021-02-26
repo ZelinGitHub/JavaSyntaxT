@@ -1,4 +1,4 @@
-package com.company.java.collect;
+package com.company.java.collection;
 
 public class Apple {
     public int size;
