@@ -28,13 +28,4 @@ public class Guy {
                 ", name='" + name +
                 '}';
     }
-
-
-    public String fuck(String pWomen){
-        return name+pWomen;
-    }
-
-    public int die(int pAge){
-        return pAge-5;
-    }
 }

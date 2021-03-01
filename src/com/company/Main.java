@@ -1,13 +1,12 @@
 package com.company;
 
 
-import com.company.java.collection.IteratorTest;
-import com.company.java.designmode.proxy.dynamicproxy.DynamicProxyTest;
+import com.company.java.classobject.reflect.GetClassTest;
 
 public class Main {
 
     public static void main(String[] args) {
-        IteratorTest.test();
+        GetClassTest.test();
     }
 
 }

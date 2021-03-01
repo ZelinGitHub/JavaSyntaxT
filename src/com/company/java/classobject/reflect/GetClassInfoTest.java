@@ -2,40 +2,33 @@ package com.company.java.classobject.reflect;
 
 import java.lang.reflect.*;
 
-/**
- * 利用反射分析类
- */
-public class ReflectAnalyseClassT {
 
+public class GetClassInfoTest {
 
-    public static String getClassInfo(String name) {
+    public void test(String name) {
         StringBuilder info = new StringBuilder();
 
         try {
             Class clsCls = Class.forName(name);
             info.append(getModifiers(clsCls))
                     .append(getParentClsName(clsCls))
-                    .append(getFieldsInfo(clsCls))
-                    .append(getConstructorsInfo(clsCls))
-                    .append(getMethodsInfo(clsCls));
+                    .append(getFields(clsCls))
+                    .append(getConstructors(clsCls))
+                    .append(getMethods(clsCls));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return info.toString();
+        System.out.println(info.toString());
     }
 
-    /**
-     * 输出目标类的所有修饰符
-     */
-    private static String getModifiers(Class clsCls) {
-        return "类的所有修饰符" + Modifier.toString(clsCls.getModifiers());
+
+    private String getModifiers(Class cls) {
+        return "类的所有修饰符" + Modifier.toString(cls.getModifiers());
     }
 
-    /**
-     * 输出目标类的父类
-     */
-    private static String getParentClsName(Class clsCls) {
-        Class superClsCls = clsCls.getSuperclass();
+
+    private String getParentClsName(Class cls) {
+        Class superClsCls = cls.getSuperclass();
         if (superClsCls != null) {
             return "父类名" + superClsCls.getName();
         } else {
@@ -43,11 +36,8 @@ public class ReflectAnalyseClassT {
         }
     }
 
-    /**
-     * 输出目标类的所有字段的信息
-     */
-    private static String getFieldsInfo(Class clsCls) {
-        Field[] fields = clsCls.getDeclaredFields();
+    private String getFields(Class cls) {
+        Field[] fields = cls.getDeclaredFields();
 
         StringBuilder info = new StringBuilder();
         for (Field field : fields) {
@@ -59,11 +49,8 @@ public class ReflectAnalyseClassT {
     }
 
 
-    /**
-     * 输出目标类的所有构造器的信息
-     */
-    private static String getConstructorsInfo(Class clsCls) {
-        Constructor[] constructors = clsCls.getConstructors();
+    private String getConstructors(Class cls) {
+        Constructor[] constructors = cls.getConstructors();
         StringBuilder info = new StringBuilder();
         for (Constructor constructor : constructors) {
             info.append("构造器名：").append(constructor.getName())
@@ -79,10 +66,8 @@ public class ReflectAnalyseClassT {
         return info.toString();
     }
 
-    /**
-     * 输出目标类的所有成员方法的信息
-     */
-    private static String getMethodsInfo(Class clsCls) {
+
+    private String getMethods(Class clsCls) {
         Method[] methods = clsCls.getMethods();
 
         StringBuilder info = new StringBuilder();
