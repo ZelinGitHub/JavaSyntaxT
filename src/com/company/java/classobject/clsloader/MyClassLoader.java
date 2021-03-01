@@ -14,6 +14,9 @@ public class MyClassLoader extends ClassLoader {
         mPath = pPath;
     }
 
+    //重写findClass方法
+    //调用loadClassData方法，加载Class文件为字节数组
+    //调用系统的defineClass方法，转换Class字节数组为Class
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         Class clazz=null;
@@ -29,6 +32,7 @@ public class MyClassLoader extends ClassLoader {
     }
 
 
+    //用文件输入流把Class文件加载到内存，得到字节数组
     private byte[] loadClassData(String name){
         //class文件的文件对象
         File file=new File(mPath,name);
