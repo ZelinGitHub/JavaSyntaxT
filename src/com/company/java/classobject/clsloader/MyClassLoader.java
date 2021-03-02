@@ -8,68 +8,61 @@ import java.io.InputStream;
 
 public class MyClassLoader extends ClassLoader {
     //class文件的路径
-    private String mPath;
+    private final String mPath;
 
     public MyClassLoader(String pPath) {
         mPath = pPath;
     }
 
-    //重写findClass方法
-    //调用loadClassData方法，加载Class文件为字节数组
-    //调用系统的defineClass方法，转换Class字节数组为Class
+    /*
+    重写findClass方法
+    加载class文件为字节码
+    调用ClassLoader的defineClass方法，转换class文件字节码为Class实例
+     */
     @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
-        Class clazz=null;
+    protected Class<?> findClass(String className) throws ClassNotFoundException {
+        Class cls = null;
         //class文件的字节数组
-        byte[] classData=loadClassData(name);
-        if(classData==null){
+        byte[] classData = loadClassBytes(className);
+        if (classData == null) {
             throw new ClassNotFoundException();
-        }else {
-            clazz=defineClass(name,loadClassData(name),0,0);
+        } else {
+            cls = defineClass(className, loadClassBytes(className), 0, 0);
         }
-
-        return clazz;
+        return cls;
     }
 
 
-    //用文件输入流把Class文件加载到内存，得到字节数组
-    private byte[] loadClassData(String name){
-        //class文件的文件对象
-        File file=new File(mPath,name);
-        InputStream in=null;
-        ByteArrayOutputStream out=null;
-        try{
-            //class文件的文件输入流
-            in=new FileInputStream(file);
-            //字节数组输出流
-            out=new ByteArrayOutputStream();
-            byte[] buffer=new byte[1024];
-            int length=0;
-            //读入数据到数组buffer
-            while((length=in.read(buffer))!=-1){
-                //把buffer数据用字节数组输出流写出到内存
-                out.write(buffer,0,length);
-            }
-            //得到字节数组输出流写出的数据
-            return out.toByteArray();
-        }catch (IOException e){
-            e.printStackTrace();
-        }finally {
-            try{
-                if(in!=null){
+    /*
+    用文件输入流，把class文件加载到内存，得到class文件的字节码
+     */
+    private byte[] loadClassBytes(String name) {
+        //class文件的File对象
+        File file = new File(mPath, name);
+        InputStream in = null;
+        ByteArrayOutputStream out = null;
+        try {
+            try {
+                in = new FileInputStream(file);
+                out = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int length = 0;
+                //使用FileInputStream，读入class文件到buffer
+                while ((length = in.read(buffer)) != -1) {
+                    //使用ByteArrayOutputStream，把buffer写出到内存
+                    out.write(buffer, 0, length);
+                }
+                return out.toByteArray();
+            } finally {
+                if (in != null) {
                     in.close();
                 }
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-
-            try{
-                if(out!=null){
+                if (out != null) {
                     out.close();
                 }
-            }catch (IOException e){
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }
