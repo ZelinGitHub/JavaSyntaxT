@@ -35,7 +35,7 @@ fun foo(callback:(()->Unit)?){
     callback?.invoke()
 }
 
-fun testHignFuncParamTest(){
+fun testHighFuncParamTest(){
     val url="http://kotl.in"
     //参数2是一个lambda，可以放到外面
     performRequest(url){code,content-> println(content)}
