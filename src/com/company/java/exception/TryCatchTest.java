@@ -36,8 +36,20 @@ public class TryCatchTest {
         }
     }
 
+    public void fuckTryCatch4(){
+        String a=null;
+        try{
+            System.out.println(a.length());
+        }catch (NullPointerException e){
+            System.out.println("捕获空指针异常");
+        }
+    }
 
 
+    public static void test(){
+        TryCatchTest tryCatchTest=new TryCatchTest();
+        tryCatchTest.fuckTryCatch4();
+    }
 
 
 }
