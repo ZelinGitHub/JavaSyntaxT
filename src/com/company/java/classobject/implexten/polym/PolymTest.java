@@ -1,7 +1,7 @@
-package com.company.java.classobject.polym;
+package com.company.java.classobject.implexten.polym;
 
-import com.company.java.bean.Employee;
-import com.company.java.bean.Manager;
+import com.company.java.array.Employee;
+import com.company.java.array.Manager;
 
 public class PolymTest {
     public void fuckPolymOut() {

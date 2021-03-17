@@ -1,4 +1,4 @@
-package com.company.java.classobject.implexten;
+package com.company.java.classobject.implexten.implextend;
 
 public class Googling {
     protected void duck(){

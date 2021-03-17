@@ -1,4 +1,4 @@
-package com.company.java.classobject.polym;
+package com.company.java.classobject.implexten.polym;
 
 public class Cola extends Drink{
     public int a=200;

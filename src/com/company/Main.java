@@ -1,11 +1,7 @@
 package com.company;
 
 
-import com.company.java.classobject.polym.PolymTest;
-import com.company.java.classobject.reflect.GetClassTest;
-import com.company.java.exception.FinallyReturnTest;
-import com.company.java.exception.TryCatchFinallyTest;
-import com.company.java.exception.TryCatchTest;
+import com.company.java.classobject.implexten.polym.PolymTest;
 
 public class Main {
 
