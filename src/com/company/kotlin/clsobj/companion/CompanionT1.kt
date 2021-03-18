@@ -1,6 +1,4 @@
-package com.company.kotlin.companion
-
-import com.company.kotlin.basic.UziNC
+package com.company.kotlin.clsobj.companion
 
 
 class B {

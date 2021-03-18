@@ -1,4 +1,4 @@
-package com.company.java.classobject.inner;
+package com.company.java.classobject.inner.staticinner;
 
 public interface Bin {
     class leg{

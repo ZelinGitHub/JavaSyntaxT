@@ -1,10 +1,9 @@
-package com.company.kotlin.basic
+package com.company.kotlin.clsobj
 
-//枚举类 软关键字enum
+
 enum class Color {
-    //实际上是类对象
-    RED,
-    ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET
+    //枚举常量
+    RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET
 }
 
 //枚举类也可以定义属性
@@ -17,11 +16,12 @@ enum class Color2(val r: Int, val g: Int, val b: Int) {
     GREEN(0, 255, 0),
     BLUE(0, 0, 255),
     INDIGO(75, 0, 130),
+
     //枚举定义方法后，必须用分号把方法和枚举值分开
     VIOLET(238, 130, 238);
 
     //枚举也可以定义方法
-    //表达式方法体可以胜率方法类型
+    //表达式方法体可以省略方法类型
     fun rgb() = (r * 256 + g) * 256 + b
 
 }

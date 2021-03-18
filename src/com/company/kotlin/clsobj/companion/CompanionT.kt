@@ -1,7 +1,4 @@
-package com.company.kotlin.companion
-
-import com.company.kotlin.basic.UziNC
-import com.company.kotlin.clsobj.getFacebookName
+package com.company.kotlin.clsobj.companion
 
 class A {
     //object对象声明

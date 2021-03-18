@@ -1,4 +1,4 @@
-package com.company.kotlin.companion;
+package com.company.kotlin.clsobj.companion;
 
 public class ObjectCompanionTest {
     public static void test() {

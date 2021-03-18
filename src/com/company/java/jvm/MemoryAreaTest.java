@@ -1,7 +1,5 @@
 package com.company.java.jvm;
 
-import com.company.kotlin.companion.A;
-
 public class MemoryAreaTest {
     private final int id = 0;
     private final Apple apple=new Apple();

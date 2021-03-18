@@ -27,7 +27,7 @@ class Client(val name:String,val postalCode:Int){
  */
 data class Client1(val name:String,val postalCode: Int)
 
-fun iiiiiiii(){
+fun fuck(){
     //创建对象
     val bob=Client("习近平",213)
     //复制对象，创建副本，改变邮编

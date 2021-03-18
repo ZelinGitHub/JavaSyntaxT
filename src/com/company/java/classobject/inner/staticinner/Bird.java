@@ -1,4 +1,4 @@
-package com.company.java.classobject.inner;
+package com.company.java.classobject.inner.staticinner;
 
 public class Bird {
     public static Chick sChick = new Chick();

@@ -1,4 +1,4 @@
-package com.company.java.classobject.inner;
+package com.company.java.classobject.inner.inner;
 
 public class Knife {
     class Head {

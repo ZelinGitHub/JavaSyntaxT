@@ -1,4 +1,4 @@
-package com.company.java.classobject.inner;
+package com.company.java.classobject.inner.innerinterface;
 
 public class Sword {
     interface Back{

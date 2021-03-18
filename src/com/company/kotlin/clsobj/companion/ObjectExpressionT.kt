@@ -1,4 +1,4 @@
-package com.company.kotlin.companion
+package com.company.kotlin.clsobj.companion
 
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent

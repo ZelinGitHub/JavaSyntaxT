@@ -1,4 +1,4 @@
-package com.company.kotlin.companion
+package com.company.kotlin.clsobj.companion
 
 
 class PersonX(val firstName:String,val lastName:String){
