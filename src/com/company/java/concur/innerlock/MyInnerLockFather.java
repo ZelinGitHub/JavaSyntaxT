@@ -1,7 +1,5 @@
 package com.company.java.concur.innerlock;
 
-import com.company.java.generic.Father;
-
 public class MyInnerLockFather {
 
     public synchronized void fuck() throws InterruptedException {

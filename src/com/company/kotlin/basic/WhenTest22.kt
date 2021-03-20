@@ -1,6 +1,7 @@
 package com.company.kotlin.basic
 
-import com.company.kotlin.basic.Color2.*
+import com.company.kotlin.clsobj.Color2
+import com.company.kotlin.clsobj.Color2.*
 import java.lang.Exception
 
 
@@ -10,7 +11,7 @@ fun getCOlod(color2: Color2)=when(color2){
     BLUE,INDIGO,VIOLET->"good girl"
 }
 
-fun mix(c1:Color2,c2: Color2)=
+fun mix(c1: Color2, c2: Color2)=
         //when的参数可以是任意对象
         when(setOf<Color2>(c1,c2)){
             //setOf函数可以得到set
@@ -21,7 +22,7 @@ fun mix(c1:Color2,c2: Color2)=
         }
 
 
-fun mixOptimized(c1:Color2,c2: Color2)=
+fun mixOptimized(c1: Color2, c2: Color2)=
         //when 可以不带参数
         when{
             (c1==RED&&c2==YELLOW)||
