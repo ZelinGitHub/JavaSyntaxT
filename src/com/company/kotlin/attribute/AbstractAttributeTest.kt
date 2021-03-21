@@ -17,9 +17,10 @@ class PrivateUser(override val nickname: String, override var workId: Int)
     : Chimpanzee
 
 class SbUser() : Chimpanzee {
-    //自定义getter 没有支持字段来存储值
+    //自定义getter ，没有支持字段来存储值
     override val nickname: String
         get() = "tom"
+    //自定义getter和setter，没有支持字段来存储值
     override var workId: Int
         get() = 1
         set(value) {
@@ -28,11 +29,12 @@ class SbUser() : Chimpanzee {
 }
 
 class SubscribingUser() : Chimpanzee {
-    //没有支持字段来存储值
-    override val nickname: String
+    //自定义getter，有支持字段来存储值
+    override val nickname: String="Jack"
         get() {
-            return "tom"
+            return "$field Mr"
         }
+    //自定义getter和setter，有支持字段来存储值
     override var workId: Int = 1
         get() = 1
         set(value) {
@@ -42,7 +44,7 @@ class SubscribingUser() : Chimpanzee {
 }
 
 class FaceBookUser() : Chimpanzee {
-    //有支持字段来存储值
+    //使用默认的getter和setter，有支持字段来存储值
     override val nickname = "tom"
     override var workId: Int = 1
 }
