@@ -40,17 +40,27 @@ object CaseInsensitiveFileComparator : Comparator<File> {
     }
 }
 
+class Person6(val name: String) {
+    object NameComparator : Comparator<Person6> {
+        override fun compare(o1: Person6, o2: Person6): Int =
+                o1.name.compareTo(o2.name)
+    }
 
-fun fuckTopObjectDeclare() {
+    object NameComparator2 : Comparator<Person6> {
+        override fun compare(o1: Person6, o2: Person6): Int =
+                o1.name.compareTo(o2.name)
+    }
+}
 
+
+fun fuckTopObject() {
     //调用对象声明的方法和访问对象声明的属性
     Payroll.allEmployees.add(UziNC("Bob"))
     //调用对象声明的方法和访问对象声明的属性
     Payroll.calculateSalary()
-
 }
 
-fun fuckInnerObjectDeclare() {
+fun fuckAttributeObject() {
     //调用对象声明的方法和访问对象声明的属性
     Korean.Payroll.allEmployees.add(UziNC("Bob"))
     //调用对象声明的方法和访问对象声明的属性
@@ -60,4 +70,10 @@ fun fuckInnerObjectDeclare() {
 
 fun fuckComparator() {
     print(CaseInsensitiveFileComparator.compare(File("/User"), File("/user")))
+}
+
+fun fuckComparator2() {
+    //使用Person6类中的比较器
+    val persons = listOf<Person6>(Person6("Bob"), Person6("Alice"))
+    print(persons.sortedWith(Person6.NameComparator))
 }
