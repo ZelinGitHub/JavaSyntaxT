@@ -1,4 +1,4 @@
-package com.company.kotlin.clsobj.companion;
+package com.company.kotlin.clsobj.objectdeclare;
 
 public class ObjectCompanionTest {
     public void fuckKotlinObject() {
