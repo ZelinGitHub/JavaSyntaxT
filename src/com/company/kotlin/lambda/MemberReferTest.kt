@@ -2,79 +2,107 @@ package com.company.kotlin.lambda
 
 
 class Bread(val name: String, val age: Int) {
-    fun starveFuck(sex: Int, color: String) {
+    fun fuck(sex: Int, color: String) {
         println("Spain")
     }
 }
 
-fun testMemberReference() {
-    val getAge = Bread::age
-    val fuck = Bread::starveFuck
-    val nextAction = ::coldFuck
-    val predicate = String::isDatui
-    val bread = Bread("Suck", 22)
-    getAge(bread)
-    fuck(bread,0,"black")
+fun fuckMemberAttr() {
+    //定义一个访问成员属性的lambda
+    //lambda的形参是成员属性所属的类类型
+    { bread: Bread -> bread.age }
+    //等价于上面的lambda表达式
+    Bread::age
 }
 
-fun testNormalLambda() {
-    val starveFuck = { bread: Bread, sex: Int, color: String -> bread.starveFuck(sex, color) }
-    val bread = Bread("Suck", 22)
-    starveFuck(bread, 0, "red")
+fun fuckMemberFun() {
+    //定义一个调用成员函数的lambda
+    //lambda的第一个形参是成员函数所属的类类型
+    //lambda的其他形参是成员函数的形参
+    { bread: Bread, sex: Int, color: String -> bread.fuck(sex, color) }
+    //等价于上面的lambda表达式
+    Bread::fuck
 }
 
-fun invokeMemberRefer(){
-    val bread = Bread("Suck", 22)
-    //实例是第一个参数
-    //成员引用必须使用括号包裹
-    //成员引用本质上是一段lambda，即使是属性成员引用也可以执行
-    (Bread::age)(bread)
-    (Bread::starveFuck)(bread, 1, "black")
+//定义顶层属性
+val deadTime: Int = 0
+fun fuckTopAttr() {
+    //定义一个访问顶层属性的lambda
+    //lambda没有形参
+    { ->
+        //访问顶层属性
+        deadTime
+    }
+    //等价于上面的lambda
+    ::deadTime
 }
 
-fun invokeMemberReferParamFunc() {
-    val breadList = listOf<Bread>(Bread("Alice", 29), Bread("Chandler", 31))
-    //maxBy函数隐式提供了一个Bread实例作为Bread::age的参数
-    breadList.maxBy(Bread::age)
-}
-
-
-//顶层函数
-fun salute() = println("Salute")
-
-fun coldFuck(age: Int, message: String) {
+//定义顶层函数
+fun fuckToDead(age: Int, message: String) {
     println("sb")
 }
 
-fun fuckTopFuncMemberRefer() {
-    //引用顶层函数，省略类名
-    run(::salute)
-    //lambda保存到变量
-    val action = {
-        //lambda参数
-        age: Int, message: String ->
-        //lambda函数体，调用了顶层函数
-        coldFuck(age, message)
+fun fuckTopFun() {
+    //定义一个调用顶层函数的lambda
+    //lambda的形参是顶层函数的形参
+    { age: Int, message: String ->
+        //调用顶层函数
+        fuckToDead(age, message)
     }
-    //这个顶层函数的成员引用等价于上面的lambda
-    val nextAction = ::coldFuck
+    //等价于上面的lambda
+    ::fuckToDead
 }
 
 
-class ChangZhang(val name: String, val age: Int) {
-    fun fuck(type: Int) {
-        println("haveShit")
+//定义扩展属性
+val String.nc: Int
+    get() {
+        return 111
     }
+
+fun fuckExtendAttr(){
+    //定义一个访问扩展属性的lambda
+    //lambda的第一个形参是扩展属性的接收者类型
+    { str: String ->
+        //访问扩展属性
+        str.nc
+    }
+    //等价于上面的lambda
+    String::nc
 }
+
+
+//定义扩展函数
+fun String.isNt() = length >= 21
+fun fuckExtendFun() {
+    //定义一个调用扩展函数的lambda
+    //lambda的第一个形参是扩展函数的接收者类型
+    { str: String ->
+        //调用扩展函数
+        str.isDatui()
+    }
+    //等价于上面的lambda
+    String::isNt
+}
+
+
+fun invokeMemberRefer() {
+    val bread = Bread("Suck", 22)
+    val breadAge = (Bread::age)(bread)
+    (Bread::fuck)(bread, 1, "black")
+    val deadTime = ::deadTime
+    (::fuckToDead)
+}
+
+
 
 fun bindMemberRefer() {
-    val ball = ChangZhang("liSing", 4396)
+    val ball: Bread = Bread("liSing", 4396)
+    val str:String="abc"
     //绑定成员引用到指定实例
-    val getBallAge = ball::age
-    val ballFuck = ball::fuck
     //绑定成员引用到指定实例之后，执行成员引用时，不再需要传递实例
-    (ball::fuck)(0)
-    //不使用绑定到实例时，执行成员引用时，需要传入实例作为参数
-    (ChangZhang::age)(ball)
-    (ChangZhang::fuck)(ball, 0)
+    val ballAge = ball::age
+    (ball::fuck)(0,"red")
+    val nc=str::nc
+    (str::isNt)()
 }
