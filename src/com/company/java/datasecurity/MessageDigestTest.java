@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MessageDigestTest {
-    public void generateDigest(byte[] pBytes) {
+    public void gSenerateDigest(byte[] pBytes) {
         try {
             //传入散列算法名
             MessageDigest md = MessageDigest.getInstance("SHA-1");
