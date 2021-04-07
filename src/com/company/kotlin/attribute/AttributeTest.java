@@ -19,6 +19,5 @@ public class AttributeTest {
         //val属性
         TopAttributeTestKt.getUNIX_LINE_SEPARATOR();
         //常量
-        String str = TopAttributeTestKt.Unix_line_sep;
     }
 }

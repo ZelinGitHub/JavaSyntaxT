@@ -4,11 +4,25 @@ import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 public class SecretKeyTest {
 
-    //生成指定加密算法的密钥字节码
     public void generateSecretKey1() {
+        try {
+            //得到指定加密算法的密钥生成器实例
+            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+            SecureRandom secureRandom = new SecureRandom();
+            //使用随机源来初始化密钥生成器
+            keyGen.init(secureRandom);
+            //生成密钥
+            SecretKey secretKey = keyGen.generateKey();
+        } catch (NoSuchAlgorithmException pE) {
+            pE.printStackTrace();
+        }
+    }
+    //生成指定加密算法的密钥字节码
+    public void generateSecretKey2() {
         try {
             //得到指定加密算法的密钥生成器实例
             KeyGenerator keyGen = KeyGenerator.getInstance("AES");
@@ -17,16 +31,21 @@ public class SecretKeyTest {
             //生成密钥
             SecretKey secretKey = keyGen.generateKey();
             //得到密钥的字节码
-            byte[] keyByte = secretKey.getEncoded();
         } catch (NoSuchAlgorithmException pE) {
             pE.printStackTrace();
         }
     }
 
+
     //使用密钥字节码，创建密钥
-    public void generateSecretKey2(byte[] keyByte) {
+    public void generateSecretKeyFromByte() {
+        byte[] keyByte = new byte[]{1, 2, 3};
         //使用密钥字节码，创建密钥
         SecretKey secretKey1 = new SecretKeySpec(keyByte, "AES");
     }
 
+
+    public void secretKeyToByte(SecretKey pSecretKey) {
+        byte[] keyByte = pSecretKey.getEncoded();
+    }
 }
