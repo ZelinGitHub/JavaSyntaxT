@@ -1,67 +1,11 @@
 package com.company.kotlin.operator
 
 import java.math.BigDecimal
-
-data class Point(val x: Int, val y: Int) {
-    /**
-     *  plus约定为+
-     *  重载+运算符
-     */
-    operator fun plus(other: Point): Point {
-        return Point(x + other.x, y + other.y)
-    }
-
-    /**
-     * ==和!= 约定为equals函数
-     * 参数可以为空，先判断是否为null，再判断相等
-     */
-    //equals的实现由编译器在Any中实现，所以只需重载，在Any类中已经被operator声明
-    override fun equals(other: Any?): Boolean {
-        //恒等运算符检查两个对象的地址，不能被重载
-        if (other === this) return true
-        if (other !is Point) return false
-        return other.x == x && other.y == y
-    }
+import java.time.LocalDate
 
 
-}
 
 
-/**
- * operator被用在了基类的接口中，无需再重复
- */
-class Mata(val firstName:String,val lastName:String):Comparable<Mata>{
-    /**
-     * <,>,<=,>=约定为compareTo函数
-     */
-    override fun compareTo(other: Mata): Int {
-        //Person::lastName是成员引用
-        return compareValuesBy(this,other, Mata::lastName, Mata::firstName)
-    }
-}
-
-
-/**
- *  运算符重载也可以是扩展函数
- */
-operator fun Point.plus(other: Point): Point {
-    return Point(x + other.x, y + other.y)
-}
-
-/**
- * 重载*运算符
- */
-operator fun Point.times(scale: Double): Point {
-    return Point((x * scale).toInt(), (y * scale).toInt())
-}
-
-
-/**
- * 重载*运算符
- */
-operator fun Char.times(count: Int): String {
-    return toString().repeat(count)
-}
 
 fun testQT() {
     val p1 = Point(10, 20)
@@ -95,36 +39,54 @@ fun testQT() {
 
     val newList = list + listOf<Int>(4, 5)
 
-    val pxd= Point(10, 20)
+    val pxd = Point(10, 20)
     println(-pxd)
 
-    var bd=BigDecimal.ZERO
+    var bd = BigDecimal.ZERO
     //调用重载过后的自加运算符
     println(bd++)
     println(++bd)
-    
-    val person1= Mata("曼施坦因", "德国")
-    val person2= Mata("蒙哥马利", "英国")
-    println(person1<person2)
+
+    val person1 = Mata("曼施坦因", "德国")
+    val person2 = Mata("蒙哥马利", "英国")
+    println(person1 < person2)
 
     //<内部调用compareTo
-    println("abc"<"bac")
+    println("abc" < "bac")
 }
 
-/**
- * 重载+=运算符  +=约定为plusAssign
- */
-operator fun<T> MutableCollection<T>.plusAssign(element:T){
-    this.add(element)
-}
-/**
- * 重载一元运算符
- */
-operator fun Point.unaryMinus(): Point {
-    return Point(-x, -y)
-}
+fun xyz() {
+    val p = Point(10, 20)
+    println(p[1])
 
-/**
- * 重载自加运算符 ++约定为函数inc
- */
-operator fun BigDecimal.inc()=this+BigDecimal.ONE
+    val mutablePoint = MutablePoint(10, 20)
+    //调用set方法
+    mutablePoint[1] = 42;
+    println(mutablePoint)
+
+
+    val rect = Rectangle(Point(10, 20), Point(50, 50))
+    //in 运算符将调用contains方法
+    println(Point(20, 20) in rect)
+    println(Point(5, 5) in rect)
+    val now = LocalDate.now()
+    //.. 约定为rangeTo
+    val vacation = now..now.plusDays(10)
+    //in 约定为contains
+    println(now.plusWeeks(1) in vacation)
+
+    val n = 9
+    println(0..(n + 1))
+
+    (0..n).forEach { print(it) }
+
+    val newYear = LocalDate.ofYearDay(2017, 1)
+    //..调用rangeTo
+    val daysOff = newYear.minusDays(1)..newYear
+    /**
+     * 内部调用iterator函数 遍历区间
+     */
+    for (dayOff in daysOff) {
+        println(dayOff)
+    }
+}
