@@ -43,3 +43,15 @@ operator fun MutableRedDick.set(index: Int, value: Int) {
         else -> throw IndexOutOfBoundsException("无效索引 $index")
     }
 }
+
+
+fun fuckGetSet(){
+    val blueDick = BlueDick(10, 20)
+    println(blueDick[1])
+
+    val mutableBlueDick = MutableBlueDick(10, 20)
+    //调用set方法
+    mutableBlueDick[1] = 42;
+    println(mutableBlueDick)
+
+}

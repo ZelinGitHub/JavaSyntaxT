@@ -22,3 +22,8 @@ fun fuckABC(str: String) {
 fun powerOf(number: Int, exponent: Int) {
     println("number:$number exponent:$exponent")
 }
+
+fun letFuckHer(){
+    val a= println("abc")
+    println(a)
+}

@@ -56,13 +56,6 @@ fun testQT() {
 }
 
 fun xyz() {
-    val p = Point(10, 20)
-    println(p[1])
-
-    val mutablePoint = MutablePoint(10, 20)
-    //调用set方法
-    mutablePoint[1] = 42;
-    println(mutablePoint)
 
 
     val rect = Rectangle(Point(10, 20), Point(50, 50))
