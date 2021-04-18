@@ -14,26 +14,36 @@ public class JavaFunTest {
         return result;
     }
 
-    public void testExtendFun(){
-        ExtendFunExtendTestKt.testExtendFunExtend();
-        ExtendFunImplTestKt.testExtendFunImpl();
-        ExtendFunPolymTestKt.testExtendFunPolym();
-
+    public void testExtendFunExtend(){
         Phone phone=new Phone();
         Nokia nokia=new Nokia();
-        ExtendFunExtendTestKt.call(phone);
-        ExtendFunExtendTestKt.call(nokia);
-
 
         Planet planet=new Mars();
         Mars mars=new Mars();
+
+        //父调用Kotlin类型定义的扩展函数
+        // Java方法重载 精准匹配
+        ExtendFunExtendTestKt.call(phone);
+        //调用Kotlin子类型从父类型继承的扩展函数
+        // Java方法重载 模糊匹配
+        ExtendFunExtendTestKt.call(nokia);
+        //调用Kotlin父类型定义的扩展函数
+        // Java方法重载 精准匹配
         ExtendFunImplTestKt.expand(planet);
+        //调用Kotlin子类型从父类型继承的扩展函数
+        // Java方法重载 模糊匹配
         ExtendFunImplTestKt.expand(mars);
+    }
 
-
+    public void testExtendFunPolym(){
         Clue clue=new Clue();
         BigClue bigClue=new BigClue();
+        //调用Kotlin父类型定义的扩展函数
+        // Java方法重载 精准匹配
         ExtendFunPolymTestKt.foo(clue);
+
+        //调用Kotlin子类型定义的扩展函数
+        // Java方法重载 精准匹配
         ExtendFunPolymTestKt.foo(bigClue);
     }
 }
