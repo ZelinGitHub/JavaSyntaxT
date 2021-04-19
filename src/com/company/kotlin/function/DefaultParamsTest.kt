@@ -1,6 +1,4 @@
-package com.company.kotlin.func
-
-import java.util.*
+package com.company.kotlin.function
 
 //参数off具有默认值0
 //参数len具有默认值b.size

@@ -1,4 +1,4 @@
-package com.company.kotlin.func
+package com.company.kotlin.function
 
 fun joinToString(name: String): String {
     println("Kick his ass")

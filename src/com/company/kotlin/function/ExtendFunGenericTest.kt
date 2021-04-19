@@ -1,9 +1,5 @@
-package com.company.kotlin.func
-//导入扩展函数
-//使用as修改导入的类或函数的名字
-import com.company.kotlin.func.lastChar as last
+package com.company.kotlin.function
 
-val ddd="4396瞎子之王".last()
 
 /**
  * 扩展函数 为集合Collection添加扩展函数
@@ -28,13 +24,6 @@ fun<T> Collection<T>.joinToString(
     return result.toString()
 }
 
-fun testzzz(){
-    val list= listOf<Int>(1,2,3)
-    //调用集合的扩展函数
-    print(list.joinToString(separator = ";",prefix = "(",postfix = ")"))
-    //默认参数值
-    print(list.joinToString())
-}
 
 //只能用于String集合的扩展函数
 fun Collection<String>.join(
@@ -43,3 +32,13 @@ fun Collection<String>.join(
         postfix: String=""
 //省略了this  调用集合的其他扩展函数作为这个函数的函数体
 )=this.joinToString(separator,prefix,postfix)
+
+
+
+fun testExtendFunGeneric(){
+    val list= listOf<Int>(1,2,3)
+    //调用集合的扩展函数
+    print(list.joinToString(separator = ";",prefix = "(",postfix = ")"))
+    //默认参数值
+    print(list.joinToString())
+}
