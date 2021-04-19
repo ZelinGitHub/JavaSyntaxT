@@ -29,10 +29,10 @@ public class JavaFunTest {
         ExtendFunExtendTestKt.call(nokia);
         //调用Kotlin父类型定义的扩展函数
         // Java方法重载 精准匹配
-        ExtendFunImplTestKt.expand(planet);
+        ExtendFunExtendTestKt.expand(planet);
         //调用Kotlin子类型从父类型继承的扩展函数
         // Java方法重载 模糊匹配
-        ExtendFunImplTestKt.expand(mars);
+        ExtendFunExtendTestKt.expand(mars);
     }
 
     public void testExtendFunPolym(){
