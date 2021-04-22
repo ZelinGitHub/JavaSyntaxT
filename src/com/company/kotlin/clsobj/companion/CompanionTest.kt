@@ -18,6 +18,11 @@ fun fuckCompanionNormal() {
     Lion.fuck()
 }
 
+fun printCompanion(){
+    val lionDick = Lion.Dick
+    println(lionDick)
+}
+
 
 
 
