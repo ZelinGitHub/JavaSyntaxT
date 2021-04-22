@@ -8,10 +8,5 @@ public class ObjectCompanionTest {
         Korean.Payroll.INSTANCE.calculateSalary();
     }
 
-    public void fuckKotlinCompanion() {
-        //调用伴生对象的方法
-        A.Companion.bar();
-        //调用伴生对象的方法
-        B.She.bar();
-    }
+
 }

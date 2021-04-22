@@ -1,4 +1,4 @@
-package com.company.kotlin.clsobj.objectdeclare
+package com.company.kotlin.clsobj.companion
 
 import com.company.kotlin.clsobj.getFacebookName
 
