@@ -1,15 +1,12 @@
 package com.company;
 
 
-import com.company.kotlin.clsobj.companion.CompanionImplTestKt;
-import com.company.kotlin.clsobj.companion.CompanionInitTestKt;
-import com.company.kotlin.clsobj.companion.CompanionTestKt;
-import com.company.kotlin.function.*;
+import com.company.kotlin.collection.FilterMapTestKt;
 
 public class Main {
 
     public static void main(String[] args) {
-        CompanionInitTestKt.testCompanionInit();
+        FilterMapTestKt.mapMap();
     }
 
 }

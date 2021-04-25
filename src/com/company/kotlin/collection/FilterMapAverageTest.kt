@@ -1,4 +1,4 @@
-package com.company.kotlin.lambda
+package com.company.kotlin.collection
 
 data class SiteVisit(
         val path: String,

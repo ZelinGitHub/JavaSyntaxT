@@ -1,6 +1,6 @@
 package com.company.kotlin.collection
 
-fun fuckk(){
+fun fuckListOfAndSetOf(){
     //定义List<String>类型引用
     val strings:List<String>
     = listOf("f","s","d")
