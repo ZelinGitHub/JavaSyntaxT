@@ -3,7 +3,7 @@ package com.company.java.concur.interrupt;
 public class SleepInterruptTest {
 
 
-    private static void test() {
+    private static void testSleepInterrupt() {
         new Thread(new Runnable() {
             @Override
             public void run() {
