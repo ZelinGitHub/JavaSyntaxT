@@ -1,6 +1,6 @@
 package com.company.java.array;
 
-public class GenerateArrayTest {
+public class CreateArrayTest {
     public int n = 10;
 
     public void decArrayVar() {
@@ -8,7 +8,7 @@ public class GenerateArrayTest {
         int b[];
     }
 
-    public void generateArray() {
+    public void createArray() {
         //创建数据时，需要指定数据的容量
         //一旦创建了数组，就不能再改变它的大小
         int[] num = new int[100];
@@ -19,7 +19,7 @@ public class GenerateArrayTest {
         int[] num3 = new int[0];
     }
 
-    public void generateArrayAndSaveData(){
+    public void createArrayAndSaveData(){
         //同时创建数组并存储元素
         //数组的大小就是存储的值的个数
         int[] smallPrimes={2,3,5,7,11,13};
