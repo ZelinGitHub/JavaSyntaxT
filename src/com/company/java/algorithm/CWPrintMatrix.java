@@ -1,4 +1,4 @@
-package com.company.java.array;
+package com.company.java.algorithm;
 
 import java.util.ArrayList;
 import java.util.List;
