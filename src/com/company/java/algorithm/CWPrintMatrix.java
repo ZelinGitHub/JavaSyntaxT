@@ -6,17 +6,8 @@ import java.util.List;
 public class CWPrintMatrix {
 
 
-    public static void cwPrintMatrix() {
-        int[] array1 = {1, 2, 3, 4};
-        int[] array2 = {5, 6, 7, 8};
-        int[] array3 = {9, 10, 11, 12};
-        int[] array4 = {13, 14, 15, 16};
-        int[][] matrix = {
-                array1
-                , array2
-                , array3
-                , array4
-        };
+    public static void cwPrintMatrix(int[][] matrix) {
+
         List<Integer> list = new ArrayList<>();
         //二维数组的元素是一维数组，它的元素个数，是矩阵的列数
         int columnNumber = matrix[0].length;
@@ -88,6 +79,20 @@ public class CWPrintMatrix {
             bottom--;
         }
         System.out.println(list.toString());
+    }
+
+    public static void test(){
+        int[] array1 = {1, 2, 3, 4};
+        int[] array2 = {5, 6, 7, 8};
+        int[] array3 = {9, 10, 11, 12};
+        int[] array4 = {13, 14, 15, 16};
+        int[][] matrix = {
+                array1
+                , array2
+                , array3
+                , array4
+        };
+        cwPrintMatrix(matrix);
     }
 
 }
