@@ -1,13 +1,13 @@
 package com.company;
 
 
-import com.company.java.operator.BitMaskTest;
+import com.company.java.datatype.string.StringTest;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        ;
+        StringTest.test2();
     }
 
 }

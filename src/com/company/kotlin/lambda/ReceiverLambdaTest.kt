@@ -15,11 +15,16 @@ fun defineExtendFunTypeVar() {
 
 fun initExtendFunTypeVar() {
     //使用lambda初始化这个扩展函数类型变量
-    val lambdaWithReceiver: String.(name: String) -> Unit = { name ->
-        //可以使用this引用接收者对象
+    val lambdaWithReceiver: String.(name: String,age:Int) -> Unit = { name ,age->
+        //可以使用this引用接收者实例
         println("接收者 $this")
         println("参数 $name")
+        println("参数 $age")
     }
+    //直接调用扩展函数类型变量，把接收者作为参数传入
+    lambdaWithReceiver("Hitler","Adolf Hitler",50)
+    //使用接收者调用扩展函数类型变量
+    "Stalin".lambdaWithReceiver("Joseph Stalin",61)
 }
 
 fun runExtendFunTypeVar() {
