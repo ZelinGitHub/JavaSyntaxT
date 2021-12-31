@@ -1,4 +1,4 @@
-package com.company.java.classobject.implexten.FatherConstructor;
+package com.company.java.classobject.member.constructor.fatherconstructor;
 
 public class BlackBall extends Ball{
     private int mNumber;
