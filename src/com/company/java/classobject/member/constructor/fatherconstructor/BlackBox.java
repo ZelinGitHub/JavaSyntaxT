@@ -4,9 +4,9 @@ public class BlackBox extends Box {
     private int mNumber;
 
     public BlackBox() {
-        int i=0;
         //显式调用父类构造方法
         super("abc");
+        int i=0;
     }
 
 

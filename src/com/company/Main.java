@@ -1,13 +1,13 @@
 package com.company;
 
 
-import com.company.java.datatype.string.StringTest;
+import com.company.java.classobject.member.constructor.ConstructorTest;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        StringTest.test2();
+        ConstructorTest.test();
     }
 
 }
