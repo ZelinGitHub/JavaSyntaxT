@@ -30,11 +30,11 @@ class RedFace : Face() {
 }
 
 class BlueFace : Face() {
-    override val name: String="Tom"
+    override val name: String = "Tom"
         get() {
             return "$field Mr"
         }
-    override var isMarried: Boolean=false
+    override var isMarried: Boolean = false
         get() {
             return field
         }
@@ -44,13 +44,24 @@ class BlueFace : Face() {
 }
 
 
-
-
 class BigAss {
     val name: String = "Mike"
     var isMarried: Boolean = false
 }
 
+class Lob {
+    val name: String
+        get() {
+            return "tom"
+        }
+    var sex: String
+        get() {
+            return "man"
+        }
+        set(value) {
+            println(value)
+        }
+}
 
 //自定义getter，
 class Rectangle() {
