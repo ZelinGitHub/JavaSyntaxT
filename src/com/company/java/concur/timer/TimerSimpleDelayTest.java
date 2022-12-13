@@ -11,13 +11,44 @@ public class TimerSimpleDelayTest {
     //以当前的时间为参考，在此时间基础上，延迟指定的毫秒数后，执行任务
     public static void test1() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalTime localTime = LocalTime.now();
-        System.out.println("主线程：当前时间为"
-                + localTime.format(dateTimeFormatter)
-                +"，计划任务执行时间为"
-                +localTime.plusSeconds(10).format(dateTimeFormatter)
-        );
+
         Timer timer = new Timer("线程1");
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                LocalTime localTime = LocalTime.now();
+                System.out.println("线程1：执行任务，当前时间为"
+                        + localTime.format(dateTimeFormatter)
+                );
+            }
+        },2000);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                LocalTime localTime = LocalTime.now();
+                System.out.println("线程1：执行任务，当前时间为"
+                        + localTime.format(dateTimeFormatter)
+                );
+            }
+        },2000);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                LocalTime localTime = LocalTime.now();
+                System.out.println("线程1：执行任务，当前时间为"
+                        + localTime.format(dateTimeFormatter)
+                );
+            }
+        },2000);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                LocalTime localTime = LocalTime.now();
+                System.out.println("线程1：执行任务，当前时间为"
+                        + localTime.format(dateTimeFormatter)
+                );
+            }
+        },2000);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
